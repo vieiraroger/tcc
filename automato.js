@@ -7,6 +7,26 @@ const numbersMeaning = {
     9: "recen-infectado"
 }
 
+
+function getData(matrix) {
+    data = {
+        "suscetivel": 0,
+        "encubado": 0,
+        "infectado": 0,
+        "morto": 0,
+        "recuperado": 0
+    }
+
+    for(var i=0; i<size; i++) {
+        for(var j=0; j<size; j++) {
+            name = numbersMeaning[matrix[i][j]]
+            data[name]++;
+        }
+    }
+
+    return data;
+}
+
 function getRandomArbitrary(min=1, max=100) {
     return Math.random() * (max - min) + min;
 }
@@ -41,7 +61,16 @@ function infect(matrix, i, j, configuration) {
         probabilityOfInfection = configuration['prob-neighbor']
         randomNumber = getRandomArbitrary(1, 100)
         if(randomNumber >= 100 - probabilityOfInfection) {
-            matrix[i][j] = 9
+            if(configuration['mask']) {
+                probabilityOfInfectionMaskReduction = 100 - configuration['onemask']
+                anotherRandomNumber = getRandomArbitrary(1, 100);
+                if(probabilityOfInfectionMaskReduction >= 100 - anotherRandomNumber) {
+                    matrix[i][j] = 9
+                }
+            }
+            else {
+                matrix[i][j] = 9
+            }
         }
     }
 

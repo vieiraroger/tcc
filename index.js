@@ -8,8 +8,7 @@ function getInformation() {
         "prob-die": document.getElementById("prob-die").value,
         "isolation": document.getElementById("isolation").checked,
         "mask": document.getElementById("mask").checked,
-        "onemask": document.getElementById("onemask").value,
-        "twomask": document.getElementById("twomask").value
+        "onemask": document.getElementById("onemask").value
     }
 
     return obj;
@@ -31,6 +30,25 @@ function createScreen() {
     inputRange.min = 1
     inputRange.max = 200
     divCanvas.appendChild(inputRange)
+    spamIteracao = document.createElement("p")
+    spamIteracao.id = 'iteracao'
+    spamSuscetivel = document.createElement("p")
+    spamSuscetivel.id = 'suscetivel'
+    spamEncubado = document.createElement("p")
+    spamEncubado.id = 'encubado'
+    spamInfectado = document.createElement("p")
+    spamInfectado.id = 'infectado'
+    spamMorto = document.createElement("p")
+    spamMorto.id = 'morto'
+    spamRecuperado = document.createElement("p")
+    spamRecuperado.id = 'recuperado'
+    divCanvas.appendChild(spamIteracao)
+    divCanvas.appendChild(spamSuscetivel)
+    divCanvas.appendChild(spamEncubado)
+    divCanvas.appendChild(spamInfectado)
+    divCanvas.appendChild(spamMorto)
+    divCanvas.appendChild(spamRecuperado)
+
 }
 
 function execute() {

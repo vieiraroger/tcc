@@ -10,6 +10,19 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function updateTexts(steps, data) {
+    console.log(data);
+    iteracao = document.getElementById("iteracao")
+    iteracao.innerHTML = "Iterações: " + steps;
+    entries = Object.entries(data)
+    for(var i=0;i<entries.length; i++) {
+        entrie = entries[i];
+        htmlObj = document.getElementById(entrie[0])
+        htmlObj.innerHTML = entrie[0] + ": " + entrie[1] 
+    }
+
+}
+
 async function initSteps(configuration) {
     screen = document.getElementById("screen")
     matrix = createStartMatrix(configuration.size)
@@ -29,6 +42,7 @@ async function initSteps(configuration) {
         matrix = result[0]
         daysMatrix = result[1]
         drawMatrix(context, matrix, 500/configuration.size)
+        updateTexts(steps, getData(matrix))
         speed = document.getElementById("speed")
         await sleep(speed.value * 10);
     }

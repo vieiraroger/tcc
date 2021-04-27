@@ -19,19 +19,19 @@
                 <form action="#" onsubmit="execute()">
                     <div class="mb-3">
                         <label for="size">Tamanho da Matrix</label>
-                        <input type="number" class="form-control" name="size" id="size">
+                        <input type="number" class="form-control" name="size" id="size" required>
                     </div>
                     <div class="mb-3">
                         <label for="size">Dias de encubação</label>
-                        <input type="number" class="form-control" name="incubation" id="incubation">
+                        <input type="number" class="form-control" name="incubation" id="incubation" required>
                     </div>
                     <div class="mb-3">
                         <label for="size">Dias de infectado</label>
-                        <input type="number" class="form-control" name="infected" id="infected">
+                        <input type="number" class="form-control" name="infected" id="infected" required>
                     </div>
                     <div class="mb-3">
                         <label for="size">Probabilidade de infectar vizinho (%)</label>
-                        <input type="number" class="form-control" name="prob-neighbor" id="prob-neighbor">
+                        <input type="number" class="form-control" name="prob-neighbor" id="prob-neighbor" required>
                     </div>
                     <div class="mb-3">
                         <label for="size">Probabilidade de um infectado morrer (durante toda a doença)</label>
@@ -50,12 +50,8 @@
                         </label>
                     </div>
                     <div class="mb-3">
-                        <label for="size">% de diminuição de contagio com um pessoa usando mascara</label>
+                        <label for="size">% de diminuição de contagio com mascara</label>
                         <input type="number" class="form-control" name="size" id="onemask">
-                    </div>
-                    <div class="mb-3">
-                        <label for="size">% de diminuição de contagio com duas pessoas usando mascara</label>
-                        <input type="number" class="form-control" name="size" id="twomask">
                     </div>
                     <button type="submit">Executar</button>
                 </form>
