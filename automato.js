@@ -48,6 +48,19 @@ function infect(matrix, i, j, configuration) {
     return matrix
 }
 
+function die(matrix, i, j, configuration) {
+    if(matrix[i][j] == 1 || matrix[i][j] == 2) {
+        probabilityOfDie = configuration['prob-die']/(configuration['incubation'] + configuration['infected'])
+        randomNumber = getRandomArbitrary(1, 100)
+        if(randomNumber >= 100 - probabilityOfDie) {
+            console.log("AAA", randomNumber, probabilityOfDie)
+            matrix[i][j] = 3
+        }
+    }
+
+    return matrix
+}
+
 function tryToInfect(matrix, i, j, configuration) {
     if(i != 0) {
         matrix = infect(matrix, i - 1, j, configuration)
@@ -77,6 +90,7 @@ function step(matrix, days, configuration) {
                     matrix[i][j] = 2
                     days[i][j] = 1
                 }
+                matrix = die(matrix, i, j , configuration)
                 days[i][j]++
             }
             // Infectados se tiver isolamento ele nao passa adiante
@@ -89,6 +103,7 @@ function step(matrix, days, configuration) {
                     matrix[i][j] = 4
                     days[i][j] = 1
                 }
+                matrix = die(matrix, i, j , configuration)
                 days[i][j]++
             }
         }
