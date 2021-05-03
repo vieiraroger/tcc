@@ -12,6 +12,7 @@
     <script src="index.js"></script>
     <script src="canvas.js"></script>
     <script src="automato.js"></script>
+    <script src="executeN.js"></script>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -22,19 +23,19 @@
                         <input type="number" class="form-control" name="size" id="size" required>
                     </div>
                     <div class="mb-3">
-                        <label for="size">Dias de encubação</label>
+                        <label for="size">Dias em encubação</label>
                         <input type="number" class="form-control" name="incubation" id="incubation" required>
                     </div>
                     <div class="mb-3">
-                        <label for="size">Dias de infectado</label>
+                        <label for="size">Dias infectado</label>
                         <input type="number" class="form-control" name="infected" id="infected" required>
                     </div>
                     <div class="mb-3">
-                        <label for="size">Probabilidade de infectar vizinho (%)</label>
+                        <label for="size">Probabilidade de infectar vizinho por iteração (%)</label>
                         <input type="number" class="form-control" name="prob-neighbor" id="prob-neighbor" required>
                     </div>
                     <div class="mb-3">
-                        <label for="size">Probabilidade de um infectado morrer (durante toda a doença)</label>
+                        <label for="size">Probabilidade de um infectado morrer durante toda a doença</label>
                         <input type="number" class="form-control" name="prob-die" id="prob-die">
                     </div>
                     <div class="form-check">
@@ -50,8 +51,12 @@
                         </label>
                     </div>
                     <div class="mb-3">
-                        <label for="size">% de diminuição de contagio com mascara</label>
+                        <label for="size">Diminuição da probabilidade de infectar (%)</label>
                         <input type="number" class="form-control" name="size" id="onemask">
+                    </div>
+                    <div class="mb-3">
+                        <label for="size">Executar N vezes</label>
+                        <input type="number" class="form-control" name="n" id="n">
                     </div>
                     <button type="submit">Executar</button>
                 </form>

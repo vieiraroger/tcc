@@ -11,7 +11,6 @@ function sleep(ms) {
 }
 
 function updateTexts(steps, data) {
-    console.log(data);
     iteracao = document.getElementById("iteracao")
     iteracao.innerHTML = "Iterações: " + steps;
     entries = Object.entries(data)
@@ -24,12 +23,11 @@ function updateTexts(steps, data) {
 }
 
 async function initSteps(configuration) {
+    results = []
     screen = document.getElementById("screen")
     matrix = createStartMatrix(configuration.size)
     daysMatrix = createStartMatrix(configuration.size)
     context = screen.getContext("2d")
-    console.log("m", matrix)
-    console.log("f", daysMatrix)
     context.globalAlpha = 1;
     context.clearRect(0, 0, screen.width, screen.height);
     drawMatrix(context, matrix, 500/configuration.size)
@@ -41,8 +39,9 @@ async function initSteps(configuration) {
         result = step(matrix, daysMatrix, configuration)
         matrix = result[0]
         daysMatrix = result[1]
+        results[steps] = data = getData(matrix)
         drawMatrix(context, matrix, 500/configuration.size)
-        updateTexts(steps, getData(matrix))
+        updateTexts(steps, results[steps])
         speed = document.getElementById("speed")
         await sleep(speed.value * 10);
     }

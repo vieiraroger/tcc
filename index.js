@@ -8,7 +8,8 @@ function getInformation() {
         "prob-die": document.getElementById("prob-die").value,
         "isolation": document.getElementById("isolation").checked,
         "mask": document.getElementById("mask").checked,
-        "onemask": document.getElementById("onemask").value
+        "onemask": document.getElementById("onemask").value,
+        "n": document.getElementById("n").value
     }
 
     return obj;
@@ -59,7 +60,12 @@ function execute() {
     if(screen == null) {
         createScreen()
     }
-
-    initSteps(configuration)
+    if(configuration.n == null || configuration.n <= 1) {
+        initSteps(configuration)
+    }
+    else {
+        executeSteps(configuration)
+    }
+    
 }
 

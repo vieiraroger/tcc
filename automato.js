@@ -16,7 +16,7 @@ function getData(matrix) {
         "morto": 0,
         "recuperado": 0
     }
-
+    let size = matrix.length
     for(var i=0; i<size; i++) {
         for(var j=0; j<size; j++) {
             name = numbersMeaning[matrix[i][j]]
@@ -45,6 +45,7 @@ function createStartMatrix(size) {
 }
 
 function isFinish(matrix) {
+    let size = matrix.length
     for(var i=0; i<size; i++) {
         for(var j=0; j<size; j++) {
             if(matrix[i][j] == 1 || matrix[i][j] == 2) {
@@ -82,7 +83,6 @@ function die(matrix, i, j, configuration) {
         probabilityOfDie = configuration['prob-die']/(configuration['incubation'] + configuration['infected'])
         randomNumber = getRandomArbitrary(1, 100)
         if(randomNumber >= 100 - probabilityOfDie) {
-            console.log("AAA", randomNumber, probabilityOfDie)
             matrix[i][j] = 3
         }
     }
@@ -108,8 +108,8 @@ function tryToInfect(matrix, i, j, configuration) {
 }
 
 function step(matrix, days, configuration) {
-    console.log(configuration)
     // passar a doença
+    let size = matrix.length
     for(var i=0; i<size; i++) {
         for(var j=0; j<size; j++) {
             // Encubados
