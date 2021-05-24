@@ -37,7 +37,9 @@ async function executeSteps(configuration) {
             result = step(matrix, daysMatrix, configuration)
             matrix = result[0]
             daysMatrix = result[1]
-            speed = document.getElementById("speed")
+            if(steps%5 == 0) {
+                
+            }
         }
         matrixes[i] = matrix;
         executions[i] = getData(matrix);

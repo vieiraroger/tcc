@@ -19,7 +19,7 @@ function getData(matrix) {
     let size = matrix.length
     for(var i=0; i<size; i++) {
         for(var j=0; j<size; j++) {
-            name = numbersMeaning[matrix[i][j]]
+            let name = numbersMeaning[matrix[i][j]]
             data[name]++;
         }
     }

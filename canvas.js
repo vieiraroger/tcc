@@ -45,7 +45,7 @@ async function initSteps(configuration) {
         speed = document.getElementById("speed")
         await sleep(speed.value * 10);
     }
-
+    drawMatrix(context, matrix, 500/configuration.size)
 }
 
 
