@@ -4,9 +4,6 @@ const SUM = (accumulator, currentValue) => accumulator + currentValue;
 function getSum(array, element) {
 
     sum = array.reduce(function(accumulator, currentValue) {
-        console.log(currentValue)
-        console.log(accumulator)
-        console.log(currentValue[element])
         return accumulator + parseInt(currentValue[element]);
     }, 0)
     return sum;
@@ -16,10 +13,17 @@ function statistics(executions, n) {
 
     mortes = getSum(executions, "morto");
     steps = getSum(executions, "steps")
-    console.log("Total de mortes ", mortes);
+    infectado = getSum(executions, "infectado")
+    encubado = getSum(executions, "encubado")
+    suscetivel = getSum(executions, "suscetivel")
+    recuperado  = getSum(executions, "recuperado")
+    
     console.log("Média de mortes", mortes/n)
-    console.log("Total de steps ", steps);
     console.log("Média de steps", steps/n)
+    console.log("Média de infectado", infectado/n)
+    console.log("Média de encubado", encubado/n)
+    console.log("Média de suscetivel", suscetivel/n)
+    console.log("Média de recuperado", recuperado/n)
 }
 
 async function executeSteps(configuration) {
@@ -37,16 +41,14 @@ async function executeSteps(configuration) {
             result = step(matrix, daysMatrix, configuration)
             matrix = result[0]
             daysMatrix = result[1]
-            if(steps%5 == 0) {
-                
+            if(steps == 419) {
+                break;
             }
         }
-        matrixes[i] = matrix;
         executions[i] = getData(matrix);
         executions[i]['steps'] = steps;
-        await sleep(1000);
+        console.log(i + " - " + steps)
     }
-        
+
     statistics(executions, n)
-    
 }
